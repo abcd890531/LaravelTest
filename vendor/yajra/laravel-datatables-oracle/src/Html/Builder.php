@@ -68,8 +68,6 @@ class Builder
      * @var array
      */
     protected $attributes = [];
-	
-	protected $nameAction;
 
     /**
      * Lists of valid DataTables Callbacks.
@@ -388,9 +386,8 @@ class Builder
      * @param array $columns
      * @return $this
      */
-    public function columns(array $columns,$nameAction='')
+    public function columns(array $columns)
     {
-	    $this->nameAction = $nameAction;
         foreach ($columns as $key => $value) {
             if (! is_a($value, Column::class)) {
                 if (is_array($value)) {
@@ -475,7 +472,7 @@ class Builder
             'defaultContent' => '',
             'data'           => 'action',
             'name'           => 'action',
-            'title'          => $this->nameAction,
+            'title'          => 'Action',
             'render'         => null,
             'orderable'      => false,
             'searchable'     => false,
@@ -483,8 +480,6 @@ class Builder
             'printable'      => true,
             'footer'         => '',
         ], $attributes);
-		
-		
         $this->collection->push(new Column($attributes));
 
         return $this;
@@ -566,7 +561,7 @@ class Builder
             $thAttr = $this->html->attributes(
                 array_only($row, ['class', 'id', 'width', 'style', 'data-class', 'data-hide'])
             );
-		    $th[]   = '<th ' . $thAttr . '>' . $row['title'] . '</th>';
+            $th[]   = '<th ' . $thAttr . '>' . $row['title'] . '</th>';
         }
 
         return $th;

@@ -44,7 +44,7 @@ class HotelDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-          	->columns($this->getColumns(),'Conditions')
+          	->columns($this->getColumns())
             ->addAction(['width' => '10%'])
             ->ajax('')
             ->parameters([

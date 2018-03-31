@@ -76,8 +76,6 @@ abstract class DataTable implements DataTableContract, DataTableButtonsContract
         $this->datatables  = $datatables;
         $this->viewFactory = $viewFactory;
     }
-	
-	
 
     /**
      * Process dataTables needed render output.
@@ -89,8 +87,6 @@ abstract class DataTable implements DataTableContract, DataTableButtonsContract
      */
     public function render($view, $data = [], $mergeData = [])
     {
-	    
-	 
         if ($this->request()->ajax() && $this->request()->wantsJson()) {
             return $this->ajax();
         }
@@ -367,8 +363,6 @@ abstract class DataTable implements DataTableContract, DataTableButtonsContract
     protected function applyScopes($query)
     {
         foreach ($this->scopes as $scope) {
-		
-
             $scope->apply($query);
         }
 
